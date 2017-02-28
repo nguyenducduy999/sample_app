@@ -33,10 +33,9 @@ class UsersController < ApplicationController
       redirect_to @user
       flash[:success] = t "sucsess"
     else
-      render :edit
       flash[:danger] = t "fail"
+      render :edit
     end
-    redirect_to root_path
   end
 
   def destroy
