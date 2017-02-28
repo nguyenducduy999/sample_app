@@ -18,6 +18,7 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
+
   config.action_mailer.delivery_method :smtp
   host = "localhost"
   config.action_mailer.default_url_options = {host: host, port: 3000}
@@ -37,6 +38,10 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   config.active_support.deprecation = :log
+
+  config.middleware.use SimplesIdeias::I18n::Middleware
+
+  config.assets.initialize_on_precompile = true
 
   config.active_record.migration_error = :page_load
 
