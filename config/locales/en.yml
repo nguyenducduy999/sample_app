@@ -71,3 +71,7 @@ en:
   post: "Post"
   micropost_feed: "Micropost Feed"
   microposts: "Microposts"
+  unfollow: "Unfollow"
+  follow: "Follow"
+  following: "following"
+  followers: "followers"

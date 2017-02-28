@@ -3,6 +3,9 @@
     <aside class="col-md-4">
       <section class="user_info">
         <%= render "shared/user_info" %>
+        <section class="stats">
+          <%= render "shared/stats" %>
+        </section>
       </section>
       <section class="micropost_form">
         <%= render "shared/micropost_form" %>
@@ -16,7 +19,6 @@
 <% else %>
   <div class="center jumbotron">
     <h1 class="shadow" ><%= t "title" %></h1>
-
     <h2><%= t "text1" %>
       <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
       <%= t "text2" %>

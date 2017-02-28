@@ -1,0 +1,4 @@
+<%= form_for @supports.create_unfollow, html: {method: :delete},
+  remote: true do |f| %>
+  <%= f.submit t("unfollow"), class: "btn" %>
+<% end %>
