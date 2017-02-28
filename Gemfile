@@ -17,6 +17,7 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "bootstrap-sass", "3.3.6"
 
 gem "bcrypt", "3.1.11"
+gem "faker", "1.6.6"
 
 group :production do
   gem "pg"
@@ -30,3 +31,6 @@ group :development do
 end
 
 gem "byebug", "~> 9.0", ">= 9.0.5"
+gem "will_paginate", "3.1.0"
+gem "bootstrap-will_paginate", "0.0.10"
+gem "rails-i18n", "~> 5.0.1"
