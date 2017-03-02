@@ -18,10 +18,6 @@ gem "bootstrap-sass", "3.3.6"
 
 gem "bcrypt", "3.1.11"
 
-group :development, :test do
-  gem "byebug", platform: :mri
-end
-
 group :production do
   gem "pg"
 end
@@ -32,3 +28,5 @@ group :development do
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
 end
+
+gem "byebug", "~> 9.0", ">= 9.0.5"

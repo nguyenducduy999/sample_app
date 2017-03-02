@@ -163,7 +163,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (= 3.1.11)
   bootstrap-sass (= 3.3.6)
-  byebug
+  byebug (~> 9.0, >= 9.0.5)
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
   jquery-rails
@@ -181,4 +181,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.14.4
+   1.14.5
