@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token
   before_save :email_downcase
+  before_creat :create_activation_digest
   has_secure_password
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: {maximum: 255},
@@ -49,6 +50,12 @@ class User < ApplicationRecord
 
     def new_token
       SecureRandom.urlsafe_base64
+    end
+
+    def create_activation_degest
+      self.activation_token = User.new_token
+      self.activation_digest = User.digest(activation_token)
+
     end
   end
 end
