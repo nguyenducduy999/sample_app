@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token, :activation_token
+  attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
   before_create :create_activation_digest
   has_secure_password
@@ -23,8 +23,9 @@ class User < ApplicationRecord
     self == user
   end
 
-
   def activate
+    update_attributes activated: true
+    update_attributes activated_at: Time.zone.now
   end
 
   def authenticated? attribute, token
@@ -51,12 +52,30 @@ class User < ApplicationRecord
     self.activation_digest = User.digest activation_token
   end
 
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_attributes reset_digest: User.digest(reset_token)
+    update_attributes reset_sent_at: Time.zone.now
+  end
+
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+  end
+
   private
   class << self
     def digest string
       cost = ActiveModel::SecurePassword.min_cost ?
         BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
-      BCrypt::Password.create(string, cost: cost)
+      BCrypt::Password.create string, cost: cost
     end
 
     def new_token
