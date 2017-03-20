@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @microposts = @user.microposts.order_created_at.paginate page: params[:page]
   end
 
   def edit

@@ -31,6 +31,11 @@ group :development do
 end
 
 gem "byebug", "~> 9.0", ">= 9.0.5"
+gem "carrierwave", "0.11.2"
+gem "mini_magick", "4.5.1"
+gem "fog", "1.38.0"
 gem "will_paginate", "3.1.0"
 gem "bootstrap-will_paginate", "0.0.10"
 gem "rails-i18n", "~> 5.0.1"
+gem "i18n-js"
+gem "config"
