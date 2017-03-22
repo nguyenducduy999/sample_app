@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @supports = Supports::User.new current_user, @user
     @microposts = @user.microposts.order_created_at.paginate page: params[:page]
   end
 
